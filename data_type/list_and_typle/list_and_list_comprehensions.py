@@ -69,8 +69,6 @@ listX.reverse()
 # 	list.sort([func]) Sorts objects of list, use compare func if given
 listX.sort()
 
-# https://www.geeksforgeeks.org/python-list/
-
 # List Comprehension
 comp_list = [x * 2 for x in range(10)]  # [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
 comp_list2 = [x ** 2 for x in range(7) if x % 2 == 0]  # [4, 16, 36]
