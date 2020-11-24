@@ -86,8 +86,6 @@ class Fisher(threading.Thread):
         print(f'Fisher {self.name} caught:')
         for fish, count in catch.items():
             print(f' {fish} - {count}')
-
-
 vasya = Fisher(name= "Vasya", worms=12)
 kolya = Fisher(name= "Kolya", worms=12)
 print('=====> Go fishing ...\n')
