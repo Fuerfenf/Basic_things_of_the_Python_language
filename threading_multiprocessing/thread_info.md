@@ -55,7 +55,7 @@ if __name__ == "__main__":
         logging.info("Main    : before joining thread %d.", index)
         thread.join()
         logging.info("Main    : thread %d done", index)
->```
+```
 > example on class:
 ```
 import threading
