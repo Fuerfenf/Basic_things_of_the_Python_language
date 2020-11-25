@@ -1,0 +1,131 @@
+## introspection - code research. Tools:
+* help() - return embedded information
+> format:`help(library)` 
+* type() - return obj type
+> format: `type(some_obj)`
+* id() returns a special id of an object
+> format: `id(some_obj)`
+* dir() function returns a sorted list of attributes and methods belonging to an object
+> format: `dir()` Without any argument, dir() returns names in the current scope.
+* attr 
+    * hasattr() function checks if an object has an attribute
+    * getattr() function returns the contents of an attribute if there are some
+```
+def fun(): 
+    pass
+print(hasattr(object, '__doc__'))
+print(hasattr(fun, '__doc__'))
+print(hasattr(fun, '__call__'))
+print(getattr(object, '__doc__'))
+print(getattr(fun, '__doc__'))
+
+>> output:
+True
+True
+True
+The most base type
+None
+```
+* isinstance() function checks if an objects is an instance of a specific class
+```
+class MyObject(object):
+    
+   def __init__(self):
+      pass
+
+o = MyObject()
+
+print(isinstance(o, MyObject))
+print(isinstance(o, object))
+print(isinstance(2, int))
+print(isinstance('str', str))
+
+>> output:
+True
+True
+True
+True
+```
+* issubclass() function checks if a specific class is a derived class of another class
+```
+class Object(object):
+    
+   def __init__(self):
+      pass
+
+class Wall(Object):
+    
+   def __init__(self):
+      pass
+
+print(issubclass(Object, Object))
+print(issubclass(Object, Wall))
+print(issubclass(Wall, Object))
+print(issubclass(Wall, Wall))
+
+>> output:
+True
+False
+True
+True
+```
+*  callable() The function checks if an object is a callable object (a function)
+    * fun() function and the setName() method are callables
+```
+class Car(object):
+      
+    def setName(self, name):
+        self.name = name    
+
+def fun():
+    pass
+
+c = Car()    
+    
+print(callable(fun))
+print(callable(c.setName))
+print(callable([]))
+print(callable(1))
+
+>> output:
+True
+True
+False
+False
+```
+* __doc__ attribute gives some documentation about an object and the 
+    * __name__ attribute holds the name of the object.
+```
+def noaction():
+   '''A function, which does nothing'''
+   pass
+
+funcs = [noaction, len, str]
+
+for i in funcs:
+    
+   print(i.__name__)
+   print(i.__doc__)
+   print("-" * 75)
+
+
+>> output:
+noaction
+A function, which does nothing
+---------------------------------------------------------------------------
+len
+Return the number of items in a container.
+---------------------------------------------------------------------------
+str
+str(object='') -> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+```
+* [more info](http://zetcode.com/lang/python/introspection/)
