@@ -1,10 +1,10 @@
 ## Base info:
 * for create threads use python modul: [threading](https://docs.python.org/3/library/threading.html)
 * for create process use python modul: [multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
-###  How and when use threading or process:
+### How and when use threading or process:
 > Threads run on a single processor and are good for speeding up some tasks, but not all. Tasks that require significant CPU computations and spend little time waiting for external events will obviously not run faster using multithreading, instead, you should use multiprocessing (multiprocessing).
 
-## Threads:
+## ** Threads:
 * Чтобы запустить отдельный поток, нужно создать экземпляр потока Thread и затем запустить его с помощью метода .start():
 * more info about [threads](https://webdevblog.ru/vvedenie-v-potoki-v-python/)
 > code example:
@@ -98,3 +98,34 @@ print('=====> Fishing is over.\n')
 ```
 ## Exceptions:
 * to catch an error, its necessary to cah the error in thread, not in the adjacent thread 
+
+## ** Multiprocessing
+[about multiprocessing modul](http://python-3.ru/page/multiprocessing)
+* example :
+```
+import os
+from multiprocessing import Process
+ 
+ 
+def doubler(number):
+    """
+    Функция умножитель на два
+    """
+    result = number * 2
+    proc = os.getpid()
+    print('{0} doubled to {1} by process id: {2}'.format(
+        number, result, proc))
+ 
+ 
+if __name__ == '__main__':
+    numbers = [5, 10, 15, 20, 25]
+    procs = []
+    
+    for index, number in enumerate(numbers):
+        proc = Process(target=doubler, args=(number,))
+        procs.append(proc)
+        proc.start()
+    
+    for proc in procs:
+        proc.join()
+```
